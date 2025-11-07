@@ -1,0 +1,72 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cadastral Zone 1",
+        "cadastral_number": "4621355200:01:001",
+        "area_hectares": 125.5,
+        "land_use": "Agricultural"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [24.295, 49.955],
+            [24.300, 49.955],
+            [24.300, 49.950],
+            [24.295, 49.950],
+            [24.295, 49.955]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cadastral Zone 2",
+        "cadastral_number": "4621355200:01:002",
+        "area_hectares": 87.3,
+        "land_use": "Residential"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [24.302, 49.952],
+            [24.308, 49.952],
+            [24.308, 49.948],
+            [24.305, 49.946],
+            [24.302, 49.948],
+            [24.302, 49.952]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Cadastral Zone 3",
+        "cadastral_number": "4621355200:01:003",
+        "area_hectares": 210.8,
+        "land_use": "Forest"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [24.290, 49.948],
+            [24.295, 49.948],
+            [24.296, 49.945],
+            [24.293, 49.943],
+            [24.289, 49.944],
+            [24.288, 49.946],
+            [24.290, 49.948]
+          ]
+        ]
+      }
+    }
+  ]
+}
+
