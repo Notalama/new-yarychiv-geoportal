@@ -1,4 +1,4 @@
-// Filter options extracted from data-mapkick.json
+// Filter options extracted from data-large-mapkick.json
 // These are stored as constants to avoid processing the large data file on every render
 
 export const OWNERSHIP_OPTIONS = [

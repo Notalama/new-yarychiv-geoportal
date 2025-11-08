@@ -3,7 +3,7 @@ import MapComponent, { FilterOptions } from './components/MapComponent'
 import FilterPanel from './components/FilterPanel'
 import { Feature, Polygon, FeatureCollection } from 'geojson'
 import cadastralData from './data.json'
-import mapkickData from './data-mapkick.json'
+import mapkickData from './data-large-mapkick.json'
 import { OWNERSHIP_OPTIONS, PURPOSE_OPTIONS, CATEGORY_OPTIONS } from './constants/filterOptions'
 
 interface NewZone {
@@ -35,7 +35,7 @@ function App() {
       if (feature.properties?.TYPE) {
         adminTypesSet.add(feature.properties.TYPE)
       }
-      if (feature.sourceLayer) {
+      if (feature.sourceLayer && feature.sourceLayer !== 'index_data') {
         sourceLayersSet.add(feature.sourceLayer)
       }
     })
@@ -101,11 +101,11 @@ function App() {
         </div>
         
         <aside className="sidebar">
-          <h2>Newly Added Zones ({newZones.length})</h2>
+          <h2>Нові зони ({newZones.length})</h2>
           
           {newZones.length === 0 ? (
             <div className="empty-state">
-              No new zones added yet. Use the polygon drawing tool on the map to add new cadastral zones.
+              Немає нових додань. Використовуйте інструмент для малювання полігону на карті, щоб додати нові земельні ділянки.
             </div>
           ) : (
             <div className="zone-list">

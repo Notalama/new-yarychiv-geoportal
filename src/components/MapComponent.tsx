@@ -5,11 +5,12 @@ import 'leaflet/dist/leaflet.css'
 import 'leaflet-draw'
 import 'leaflet-draw/dist/leaflet.draw.css'
 import { Feature, Polygon, FeatureCollection } from 'geojson'
+import { OwnershipType } from '../constants/filterOptions'
 
 // Fix for default markers in Leaflet
 import icon from 'leaflet/dist/images/marker-icon.png'
 import iconShadow from 'leaflet/dist/images/marker-shadow.png'
-import mapkickData from '../data-mapkick.json'
+import mapkickData from '../data-large-mapkick.json'
 
 let DefaultIcon = L.icon({
   iconUrl: icon,
@@ -225,12 +226,34 @@ function MapComponent({ onNewZone, filters }: MapComponentProps) {
   // This forces React to re-render the component when filters change
   const filterKey = `${Array.from(filters.landUse).sort().join(',')}-${Array.from(filters.administrativeType).sort().join(',')}-${Array.from(filters.sourceLayer).sort().join(',')}-${Array.from(filters.ownership).sort().join(',')}-${Array.from(filters.purpose).sort().join(',')}-${Array.from(filters.category).sort().join(',')}`
 
-  // Style for existing cadastral zones
-  const cadastralStyle = {
-    color: '#2ecc71',
-    weight: 2,
-    fillOpacity: 0.35,
-    fillColor: '#27ae60',
+  // Style for existing cadastral zones based on ownership
+  const getCadastralStyle = (feature?: Feature): L.PathOptions => {
+    const ownership = feature?.properties?.ownership as OwnershipType | undefined
+    
+    // Color coding based on ownership
+    if (ownership === "Не визначено") {
+      return {
+        color: '#3498db',      // Blue border
+        weight: 2,
+        fillOpacity: 0.35,
+        fillColor: '#2980b9',  // Darker blue fill
+      }
+    } else if (ownership === "Комунальна власність") {
+      return {
+        color: '#f39c12',      // Orange border
+        weight: 2,
+        fillOpacity: 0.35,
+        fillColor: '#e67e22',  // Darker orange fill
+      }
+    } else {
+      // Default green for all other ownership types
+      return {
+        color: '#2ecc71',      // Green border
+        weight: 2,
+        fillOpacity: 0.35,
+        fillColor: '#27ae60',  // Darker green fill
+      }
+    }
   }
 
   // Add popup to each feature
@@ -293,7 +316,7 @@ function MapComponent({ onNewZone, filters }: MapComponentProps) {
       <GeoJSON
         key={filterKey}
         data={allCadastralZones}
-        style={cadastralStyle}
+        style={getCadastralStyle}
         onEachFeature={onEachFeature}
       />
       

@@ -155,7 +155,7 @@ function FilterPanel({ availableLandUses, availableAdminTypes, availableSourceLa
         aria-label="Toggle filters"
       >
         <span className="filter-icon">🔍</span>
-        <span className="filter-label">Filters</span>
+        <span className="filter-label">Фільтри</span>
         <span className="expand-icon">{isExpanded ? '▼' : '▲'}</span>
       </button>
 
@@ -165,10 +165,10 @@ function FilterPanel({ availableLandUses, availableAdminTypes, availableSourceLa
           {availableLandUses.length > 0 && (
             <div className="filter-section">
               <div className="filter-header">
-                <h3>Land Use Category</h3>
+                <h3>Категорія використання землі</h3>
                 <div className="filter-actions">
-                  <button onClick={selectAllLandUses} className="action-btn">All</button>
-                  <button onClick={deselectAllLandUses} className="action-btn">None</button>
+                  <button onClick={selectAllLandUses} className="action-btn">Всі</button>
+                  <button onClick={deselectAllLandUses} className="action-btn">Жодного</button>
                 </div>
               </div>
               <div className="filter-options">
@@ -193,10 +193,10 @@ function FilterPanel({ availableLandUses, availableAdminTypes, availableSourceLa
           {availableAdminTypes.length > 0 && (
             <div className="filter-section">
               <div className="filter-header">
-                <h3>Administrative Type</h3>
+                <h3>Тип адміністративної одиниці</h3>
                 <div className="filter-actions">
-                  <button onClick={selectAllAdminTypes} className="action-btn">All</button>
-                  <button onClick={deselectAllAdminTypes} className="action-btn">None</button>
+                  <button onClick={selectAllAdminTypes} className="action-btn">Всі</button>
+                  <button onClick={deselectAllAdminTypes} className="action-btn">Жодного</button>
                 </div>
               </div>
               <div className="filter-options">
@@ -221,10 +221,10 @@ function FilterPanel({ availableLandUses, availableAdminTypes, availableSourceLa
           {availableSourceLayers.length > 0 && (
             <div className="filter-section">
               <div className="filter-header">
-                <h3>Source Layer</h3>
+                <h3>Джерело даних</h3>
                 <div className="filter-actions">
-                  <button onClick={selectAllSourceLayers} className="action-btn">All</button>
-                  <button onClick={deselectAllSourceLayers} className="action-btn">None</button>
+                  <button onClick={selectAllSourceLayers} className="action-btn">Всі</button>
+                  <button onClick={deselectAllSourceLayers} className="action-btn">Жодного</button>
                 </div>
               </div>
               <div className="filter-options">
@@ -248,10 +248,10 @@ function FilterPanel({ availableLandUses, availableAdminTypes, availableSourceLa
           {/* Ownership Filters */}
           <div className="filter-section">
             <div className="filter-header">
-              <h3>Форма власності (Ownership)</h3>
+              <h3>Форма власності</h3>
               <div className="filter-actions">
-                <button onClick={selectAllOwnerships} className="action-btn">All</button>
-                <button onClick={deselectAllOwnerships} className="action-btn">None</button>
+                <button onClick={selectAllOwnerships} className="action-btn">Всі</button>
+                <button onClick={deselectAllOwnerships} className="action-btn">Жодного</button>
               </div>
             </div>
             <div className="filter-options">
@@ -274,10 +274,10 @@ function FilterPanel({ availableLandUses, availableAdminTypes, availableSourceLa
           {/* Purpose Filters */}
           <div className="filter-section">
             <div className="filter-header">
-              <h3>Цільове призначення (Purpose)</h3>
+              <h3>Цільове призначення</h3>
               <div className="filter-actions">
-                <button onClick={selectAllPurposes} className="action-btn">All</button>
-                <button onClick={deselectAllPurposes} className="action-btn">None</button>
+                <button onClick={selectAllPurposes} className="action-btn">Всі</button>
+                <button onClick={deselectAllPurposes} className="action-btn">Жодного</button>
               </div>
             </div>
             <div className="filter-options">
@@ -300,10 +300,10 @@ function FilterPanel({ availableLandUses, availableAdminTypes, availableSourceLa
           {/* Category Filters */}
           <div className="filter-section">
             <div className="filter-header">
-              <h3>Категорія земель (Category)</h3>
+              <h3>Категорія земель</h3>
               <div className="filter-actions">
-                <button onClick={selectAllCategories} className="action-btn">All</button>
-                <button onClick={deselectAllCategories} className="action-btn">None</button>
+                <button onClick={selectAllCategories} className="action-btn">Всі</button>
+                <button onClick={deselectAllCategories} className="action-btn">Жодного</button>
               </div>
             </div>
             <div className="filter-options">
@@ -325,7 +325,7 @@ function FilterPanel({ availableLandUses, availableAdminTypes, availableSourceLa
 
           <div className="filter-summary">
             <p>
-              Filters: {selectedLandUses.size} land use, {selectedAdminTypes.size} admin, {selectedSourceLayers.size} layers, {selectedOwnerships.size} ownership, {selectedPurposes.size} purpose, {selectedCategories.size} category
+              Фільтри: {selectedLandUses.size} використання, {selectedAdminTypes.size} адмін., {selectedSourceLayers.size} джерел, {selectedOwnerships.size} власність, {selectedPurposes.size} призначення, {selectedCategories.size} категорій
             </p>
           </div>
         </div>
