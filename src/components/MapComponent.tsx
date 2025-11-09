@@ -264,7 +264,27 @@ function MapComponent({ onNewZone, filters }: MapComponentProps) {
       // Handle different data formats (generated vs mapkick data)
       let popupContent = '<div style="font-family: sans-serif;">'
       
-      if (props.name) {
+      // Check for utility network infrastructure first
+      if (props.category === "Інформація про комунальні мережі") {
+        // Format for utility network infrastructure points
+        const statusColor = props.status === "Аварійний" ? "#e74c3c" : 
+                           props.status === "Потребує ремонту" ? "#e67e22" : 
+                           props.status === "Задовільний" ? "#f39c12" : "#27ae60"
+        
+        popupContent += `
+          <div style="border-left: 4px solid ${statusColor}; padding-left: 8px;">
+            <h3 style="margin: 0 0 8px 0; font-size: 15px; color: #2c3e50;">🏗️ ${props.name || 'Комунальний об\'єкт'}</h3>
+            ${props.description ? `<p style="margin: 4px 0 8px 0; font-size: 12px; color: #34495e; font-style: italic;">${props.description}</p>` : ''}
+            <div style="background: #ecf0f1; padding: 8px; border-radius: 4px; margin: 8px 0;">
+              <p style="margin: 4px 0; font-size: 12px;"><strong>📊 Статус:</strong> <span style="color: ${statusColor}; font-weight: bold;">${props.status || 'N/A'}</span></p>
+              ${props.priority ? `<p style="margin: 4px 0; font-size: 12px;"><strong>⚡ Пріоритет:</strong> ${props.priority}</p>` : ''}
+              ${props.year_built ? `<p style="margin: 4px 0; font-size: 12px;"><strong>📅 Рік побудови:</strong> ${props.year_built}</p>` : ''}
+              ${props.estimated_cost ? `<p style="margin: 4px 0; font-size: 12px;"><strong>💰 Оціночна вартість:</strong> ${props.estimated_cost}</p>` : ''}
+            </div>
+            <p style="margin: 4px 0; font-size: 11px; color: #7f8c8d;">Інвестиційна інфраструктура</p>
+          </div>
+        `
+      } else if (props.name && props.cadastral_number) {
         // Format for generated/static data
         popupContent += `
           <h3 style="margin: 0 0 8px 0; font-size: 14px;">${props.name}</h3>
