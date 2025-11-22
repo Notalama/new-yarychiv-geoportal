@@ -5,6 +5,7 @@ import { Feature, Polygon, FeatureCollection } from 'geojson'
 import cadastralData from './data.json'
 import mapkickData from './data-large-mapkick.json'
 import { OWNERSHIP_OPTIONS, PURPOSE_OPTIONS, CATEGORY_OPTIONS } from './constants/filterOptions'
+import MetadataMenu from './components/MetadataMenu'
 
 interface NewZone {
   id: string
@@ -14,7 +15,7 @@ interface NewZone {
 
 function App() {
   const [newZones, setNewZones] = useState<NewZone[]>([])
-
+  const [showCatalog, setShowCatalog] = useState(false)
   // Extract unique land uses, administrative types, and source layers from data
   const { availableLandUses, availableAdminTypes, availableSourceLayers } = useMemo(() => {
     const landUsesSet = new Set<string>()
@@ -85,11 +86,35 @@ function App() {
   return (
     <div className="app-container">
       <header className="app-header">
-        <h1>Cadastral Zones - Novoyarychivska OTG</h1>
-        <p>View existing cadastral zones and draw new polygonal areas</p>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div className="app-header-content">
+            <h1>Cadastral Zones - Novoyarychivska OTG</h1>
+            <p>View existing cadastral zones and draw new polygonal areas</p>
+          </div>
+          <button 
+            onClick={() => setShowCatalog(!showCatalog)}
+            style={{
+              padding: '0.75rem 1.5rem',
+              fontSize: '0.9rem',
+              fontWeight: '600',
+              borderRadius: '25px',
+              border: '2px solid white',
+              backgroundColor: 'white',
+              color: '#2c3e50',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease'
+            }}
+          >
+            {showCatalog ? 'НА КАРТУ' : 'КАТАЛОГ МЕТАДАНИХ'}
+          </button>
+        </div>
       </header>
       
       <div className="content-wrapper">
+      {showCatalog ? (
+          <MetadataMenu onShowMap={() => setShowCatalog(false)} />
+        ) : (
+          <>
         <div className="map-container">
           <FilterPanel
             availableLandUses={availableLandUses}
@@ -125,6 +150,8 @@ function App() {
             </div>
           )}
         </aside>
+        </>
+        )}
       </div>
     </div>
   )
